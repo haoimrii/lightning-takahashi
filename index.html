@@ -2,13 +2,56 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Lightning Takahashi (Takahashi method with JSON for lightning talk)</title>
+    <title>Lightning Takahashi - Takahashi method for lightning talk with markdown notation</title>
+    <script src="marked.min.js"></script>
+    <style>
+        h1 { font-size: 90pt; text-align: center;}
+        h2 { font-size: 70pt; text-align: center;}
+        li { font-size: 50pt;}
+        div { align: center; font-size: 50pt;}
+        div.page { display: none; width: 70%; position:absolute; left: 15%;}
+        html, body { width: 100%; height: 100%;}
+    </style>
 </head>
-<body>
-     <div id="main"></div>
-     <div id="massage"></div>
+<body onclick="next()">
+    <div id="content" style="display:none;">
+Lightning Takahashi
+=========
+Takahashi method for lightning talk with markdown notation
+
+## message 1
+- aaaa
+- bbbb
+
+## message 2
+1. ccc
+2. ddd
+    </div>
+    <div id="viewer"></div>
 </body>
 <script>
-    
+    var count = 1;
+    var renderer = new marked.Renderer(); 
+    renderer.heading = function (text, level) {
+        ret = '</div><div class="page" id="page' + count + '"><h' + level + '>' + text + '</h' + level + '>';
+        count++;
+        return ret;
+    },
+    renderer.html = function (html) {
+        return '<div id="0">' + html + '</div>';
+    }        
+
+    text = document.getElementById("content").innerHTML;
+    tmp = marked(text, {renderer: renderer});
+    document.getElementById("viewer").innerHTML = tmp;
+
+    document.getElementById("page1").style.display = "block";
+
+    var current = 1;
+    function next() {
+        document.getElementById("page" + current).style.display = "none";
+        current++;
+        document.getElementById("page" + current).style.display = "block";
+    }
 </script>
 </html>
