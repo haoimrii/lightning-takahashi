@@ -7,6 +7,9 @@ Takahashi method for the Lightning talk. This is made in JavaScript.
 3. Click on the screen, the next chapter will be displayed.
 4. When you view up to the last, a blank screen.
 
+## Characteristic
+- Because it does not refer to an external file, it can operate in the local without server.
+
 # ライトニング高橋
 ライトニングトークのための高橋メソッド。これはJavaScriptで作られている。
 
@@ -15,3 +18,6 @@ Takahashi method for the Lightning talk. This is made in JavaScript.
 2. index.html をブラウザで表示する。タイトルが表示される。
 3. 画面をクリックすると、次の章が表示される。
 4. 最後まで表示すると、ブランク画面になる。
+
+## 特徴
+- 外部ファイルを参照しないため、サーバなしのローカルで動作可能。
